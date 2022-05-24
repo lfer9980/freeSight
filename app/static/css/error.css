@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+/* fuentes principales */
+
+html {
+  font-size: 62.5%;
+  font-family: "Heebo", sans-serif;
+  scroll-behavior: smooth;
+  color: white;
+}
+
+
+body {
+  content: "";
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+main {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.login__title {
+  font-size: 4.2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.button {
+  width: 150px;
+  height: 30px;
+  padding: 5px;
+  margin: 20px auto 0 auto;
+  font-family: "Heebo", sans-serif;
+  font-weight: bold;
+  color: #FFF;
+  background-color: #186a90;
+  border: 0;
+  box-shadow: 0 4px 8px rgba(13, 13, 13, 0.5);
+  cursor: pointer;
+  display: block;
+}
+.button:hover {
+  color: #186a90;
+  background-color: #F2EDDC;
+  border: 0;
+  box-shadow: 0 4px 8px rgba(13, 13, 13, 0.5);
+}
+
+.error {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 700px;
+  margin: 20px auto 0 auto;
+}
