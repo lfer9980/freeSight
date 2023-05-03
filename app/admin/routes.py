@@ -38,9 +38,8 @@ def home():
 
     current_name = get_current_username()
     
-    try:
-        
-        data =  Data.query.with_entities(Data.temp, Data.hum, Data.datetime).all()
+    try:   
+        data =  Data.query.with_entities(Data.lect, Data.datetime).order_by(Data.datetime.desc()).limit(20).all()
     
     except Exception as e:
         
@@ -49,23 +48,17 @@ def home():
         flash("Error al conectarse en la base de datos", "error")
         
         return redirect(url_for('admin.home'), code = 302)
+
     else:
-        
         if len(data):
-            
-            
-            labels = [f'{d.datetime}' for d in data]
-            
-            temp = [f'{d[0]}' for d in data]
-            
-            hum = [f'{d[1]}' for d in data]
+            labels = [f'{d.datetime.year}/{d.datetime.day}/{d.datetime.month} -- {d.datetime.hour}:{d.datetime.minute}:{d.datetime.second}' for d in data]
+            lect = [f'{d[0]}' for d in data]
                         
             return render_template('admin/home.html',
                            nombre = current_name,
                            marcador = True,
                            labels = labels,
-                           temdata = temp,
-                           humdata = hum
+                           lectdata = lect,
                            )
         
         else:

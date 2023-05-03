@@ -15,10 +15,10 @@ from datetime import datetime
 from flask_login import login_user
 
 
-@public_bp.before_app_first_request
+@public_bp.before_app_request
 def create_db():
     
-    test = False
+    test = True
     db.create_all()
     
     if not models.User.query.first():
@@ -36,29 +36,26 @@ def create_db():
     
     if test:
         id = str(uuid.uuid4())
-        hum = 80
-        temp = 25
+        lect = 95
         date = datetime.now()
         
-        jeje = models.Data(id = id,
-                        hum = hum,
-                        temp = temp,
+        test_1 = models.Data(id = id,
+                        lect = lect,
                         datetime = date)
         
-        db.session.add(jeje)
+        db.session.add(test_1)
         db.session.commit()
         
         
 @public_bp.route('/', methods=['GET'])
 def index():
     
-    message = {'message': 'Proyecto de base de datos, control de un sistema de riego',
+    message = {'message': 'proyecto telemedicina: transmision de señales biomedicas a traves de internet',
                'login': '/api/v1/login',
                'datos': '/api/v1/datos',
                'formato': 'json',
-               'integrantes': 'Jessy Garcia, Luis Fernandez, Melanie Delgado, Jesus Hernandez, Miguel Barrera',
-               'grupo': '7IB1',
-               'Materia': 'Base de datos'}
+               'integrantes': 'luis fernandez, eduardo torres',
+               'Materia': 'telemedicina'}
     
     return render_template('index.html', message=message)
 
@@ -83,7 +80,6 @@ def login():
         
         if user:
             
-            
             login_user(user)
             
             return redirect(url_for('admin.home'), code = 302)
@@ -105,8 +101,7 @@ def data():
     
     try:
         id = str(uuid.uuid4())
-        temp = float(request.form['temp'])
-        hum = float(request.form['hum'])
+        lect = float(request.form['lect'])
         time = datetime.now()
     
     except Exception as e:
@@ -119,8 +114,7 @@ def data():
           
         data = {
             'id': id,
-            'temp': temp,
-            'hum': hum,
+            'lect': lect,
             'datetime': time
         }
         
@@ -151,10 +145,7 @@ def getdata():
         data = data[0]
         
         resp_data = {
-            'temp': data.temp,
-            'hum': data.hum,
-            'ishot': True if data.temp > 23 else False,
-            'ishum': True if data.hum > 25 else False 
+            'lect': data.lect,
         }
         
         return jsonify(resp_data)
