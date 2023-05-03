@@ -18,7 +18,7 @@ from flask_login import login_user
 @public_bp.before_app_request
 def create_db():
     
-    test = True
+    test = False
     db.create_all()
     
     if not models.User.query.first():
