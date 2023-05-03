@@ -102,9 +102,21 @@ main {
 }
 
 .graphic-container {
-    width: 100%;
+    width: 90%;
 }
 
 #chart {
     background-color:  rgba(255, 255, 255, 0.9);
 }
+
+.error {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    margin: 20px auto 0 auto;
+  }
+  
+  .errorh1 {
+    font-size: 50px;
+  }

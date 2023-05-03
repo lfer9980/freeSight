@@ -55,32 +55,24 @@ class Data(db.Model):
     
     id: str
     
-    temp: float
-    
-    hum: float
+    lect: float
     
     datetime: str
     
     id = db.Column(db.String(256),
                    primary_key = True)
     
-    temp = db.Column(db.Float,
+    lect = db.Column(db.Float,
                      nullable = False)
-    
-    hum = db.Column(db.Float,
-                    nullable = False)
     
     datetime = db.Column(db.DateTime,
                          nullable = False)
     
-    def __init__(self, id: str, temp: float,
-                 hum: float, datetime) -> None:
+    def __init__(self, id: str, lect: float, datetime) -> None:
         
         self.id = id
                 
-        self.temp = temp 
-        
-        self.hum = hum
+        self.lect = lect 
         
         self.datetime = datetime
     

@@ -1,27 +1,19 @@
 <section class="home-section">
-	<h4 class="graphic__title">Grafica de sensores</h4>
+	<h4 class="graphic__title">Grafica ECG</h4>
 	<div class="graphic-container">
 		<canvas id=chart width="inherit" height="inherit"></canvas>
 		<script>
-			let temdata = {{ temdata | safe }}
+			let lectdata = {{ lectdata | safe }}
 			let labels = {{ labels | safe }}
-			let humdata = {{ humdata | safe }}
 			chart = new Chart(document.getElementById("chart"), {
 				type: 'line',
 				data: {
 					labels: labels,
 					datasets: [{
-						label: "Temperatura",
-						data: temdata,
+						label: "mV ECG",
+						data: lectdata,
 						borderColor: "#3e95cd",
-						backgroundColor: 'rgba(0, 0, 0, 0)',
-					},
-					{
-						label: "Humedad",
-						fontColor: "#3e95cd",
-						data: humdata,
-						borderColor: "#8e5ea2",
-						backgroundColor: 'rgba(0, 0, 0, 0)',
+						backgroundColor: 'rgba(0, 0, 0, 0.5)',
 					}]
 				},
 				options: {
@@ -31,8 +23,16 @@
 							position: 'center',
 						}
 					},
+					animation: false,
 				}
 			});
+		</script>
+		<script>
+			(function reload() {
+				setTimeout(() => {
+					document.location.reload();
+				}, 3000);
+			})();
 		</script>
 	</div>
 </section>
