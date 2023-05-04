@@ -39,7 +39,9 @@ def home():
     current_name = get_current_username()
     
     try:   
-        data =  Data.query.with_entities(Data.lect, Data.datetime).order_by(Data.datetime.desc()).limit(20).all()
+        data =  Data.query.with_entities(Data.lect, Data.datetime).order_by(Data.datetime.desc()).limit(25).all()
+        data = data[::-1]
+        print(data)
     
     except Exception as e:
         

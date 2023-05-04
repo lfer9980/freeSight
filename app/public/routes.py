@@ -141,7 +141,6 @@ def getdata():
     try:
         data = models.Data.query.order_by(models.Data.datetime.desc()).limit(1)
     
-        
         data = data[0]
         
         resp_data = {
