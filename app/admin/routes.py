@@ -41,7 +41,6 @@ def home():
     try:   
         data =  Data.query.with_entities(Data.lect, Data.datetime).order_by(Data.datetime.desc()).limit(25).all()
         data = data[::-1]
-        print(data)
     
     except Exception as e:
         
