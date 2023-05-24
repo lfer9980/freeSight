@@ -1,9 +1,9 @@
-# iControl web
-
-Página que permite visualizar los datos mandados desde el cliente de Arduino.
-
-Proyecto de base de datos ing biomedica
+# Free Sight
+Servidor para envio de datos de EEG OpenBCI
 
 ## Autores
 Jesús Alan Hernández
 Luis Ángel Fernández
+Jessica Garcia
+Yadira Bustillos
+Vethsave Flores

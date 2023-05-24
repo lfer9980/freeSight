@@ -1,81 +1,69 @@
 from dataclasses import dataclass
 from app import db
 
-
-class User(db.Model):
-    
-    __tablename__ = 'user'
-    
-    id = db.Column(db.String(256),
-                   primary_key = True)
-    
-    username = db.Column(db.String(64),
-                         unique = True,
-                         nullable = False)
-    
-    email = db.Column(db.String(120),
-                      unique = True,
-                      nullable = False)
-    
-    password = db.Column(db.String(256),
-                         nullable = False)
-    
-                         
-    def __init__(self, id: str, username: str, email: str, password: str) -> None:
-        
-        
-        self.id = id
-        self.username = username
-        self.email = email
-        self.password = password
-    
-    def __repr__(self) -> str:
-        
-        return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
-    
-    def is_authenticated(self):
-        return True
-
-    def is_active(self):
-        return True
-
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        return str(self.id)
-    
-    def __str__(self) -> str:
-        return super().__str__()
-    
 @dataclass
-class Data(db.Model):
-    
-    __tablename__ = 'datas'
-    
+class Chat(db.Model):
+
+    __tablename__ = 'chat'
+
     id: str
-    
-    lect: float
-    
+
+    msg: str
+
     datetime: str
-    
+
     id = db.Column(db.String(256),
-                   primary_key = True)
-    
-    lect = db.Column(db.Float,
-                     nullable = False)
-    
+                   primary_key=True)
+
+    msg = db.Column(db.String,
+                    nullable=False)
+
     datetime = db.Column(db.DateTime,
-                         nullable = False)
-    
-    def __init__(self, id: str, lect: float, datetime) -> None:
-        
+                         nullable=False)
+
+    def __init__(self, id: str, msg: str, datetime) -> None:
+
         self.id = id
-                
-        self.lect = lect 
-        
+        self.msg = msg
         self.datetime = datetime
-    
+
+    def __repr__(self):
+
+        return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+
+
+@dataclass
+class Domo(db.Model):
+
+    __tablename__ = 'domo'
+
+    id: str
+
+    led: str
+
+    status: bool
+
+    datetime: str
+
+    id = db.Column(db.String(256),
+                   primary_key=True)
+
+    led = db.Column(db.String(256),
+                    nullable=False)
+
+    status = db.Column(db.Integer,
+                       nullable=False)
+
+    datetime = db.Column(db.DateTime,
+                         nullable=False)
+
+    def __init__(self, id: str, led: str, status: str, datetime) -> None:
+
+        self.id = id
+        self.led = led
+        self.status = status
+        self.datetime = datetime
+
     def __repr__(self):
 
         return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))

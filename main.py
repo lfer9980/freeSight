@@ -6,7 +6,6 @@ load_dotenv()
 
 app = create_app()
 
-if __name__ == "__main__":
-    
-    app.run(host =  f'{socket.gethostbyname(socket.gethostname())}',
+if __name__ == "__main__": 
+    app.run(host =  "192.168.0.15",
             port = '80')
