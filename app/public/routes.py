@@ -38,8 +38,10 @@ def create_db():
 def domo_data():
     try:
         id = str(uuid.uuid4())
-        led = str(request.form['led'])
-        status = float(request.form['status'])
+        led_1= str(request.form['led_1'])
+        led_2 = str(request.form['led_2'])
+        status_1 = float(request.form['status_1'])
+        status_2 = float(request.form['status_2'])
         time = datetime.now()
 
     except Exception as e:
@@ -49,8 +51,10 @@ def domo_data():
     else:
         domo_data = {
             'id': id,
-            'led': led,
-            'status': status,
+            'led_1': led_1,
+            'status_1': status_1,
+            'led_2': led_2,
+            'status_2': status_2,
             'datetime': time
         }
 
@@ -107,8 +111,10 @@ def get_domo_data():
         domo_data = domo_data[0]
 
         resp_domo_data = {
-            'led': domo_data.led,
-            'status': domo_data.status,
+            'led_1': domo_data.led_1,
+            'led_2': domo_data.led_2,
+            'status_1': domo_data.status_1,
+            'status_2': domo_data.status_2,
         }
 
         return jsonify(resp_domo_data)

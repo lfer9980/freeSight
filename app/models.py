@@ -39,29 +39,41 @@ class Domo(db.Model):
 
     id: str
 
-    led: str
+    led_1: str
 
-    status: bool
+    led_2: str
+
+    status_1: bool
+
+    status_2: bool
 
     datetime: str
 
     id = db.Column(db.String(256),
                    primary_key=True)
 
-    led = db.Column(db.String(256),
+    led_1 = db.Column(db.String(256),
+                    nullable=False)
+    
+    led_2 = db.Column(db.String(256),
                     nullable=False)
 
-    status = db.Column(db.Integer,
+    status_1 = db.Column(db.Integer,
+                       nullable=False)
+    
+    status_2 = db.Column(db.Integer,
                        nullable=False)
 
     datetime = db.Column(db.DateTime,
                          nullable=False)
 
-    def __init__(self, id: str, led: str, status: str, datetime) -> None:
+    def __init__(self, id: str, led_1: str, led_2: str, status_1: str, status_2: str, datetime) -> None:
 
         self.id = id
-        self.led = led
-        self.status = status
+        self.led_1 = led_1
+        self.led_2 = led_2
+        self.status_1 = status_1
+        self.status_2 = status_2
         self.datetime = datetime
 
     def __repr__(self):
